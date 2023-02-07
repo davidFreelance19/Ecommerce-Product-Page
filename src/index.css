@@ -4,3 +4,17 @@
 *{
     font-family: 'Kumbh Sans', sans-serif;
 }
+.modal{
+    animation: modal 400ms linear;
+}
+@keyframes modal{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 50%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}

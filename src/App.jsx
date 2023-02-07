@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import InfoProduct from "./components/InfoProduct";
+import Modal from "./components/Modal";
 import imgProduct1 from "/images/image-product-1-thumbnail.jpg";
 import imgProduct2 from "/images/image-product-2-thumbnail.jpg";
 import imgProduct3 from "/images/image-product-3-thumbnail.jpg";
@@ -11,6 +12,7 @@ function App() {
   );
   const [cantidad, setCantidad] = useState(0);
   const [cantidadFinal, setCantidadFinal] = useState(0);
+  const [modal, setModal] = useState(false)
   const imgSm = [imgProduct1, imgProduct2, imgProduct3, imgProduct4];
   const producto = {
     empresa: "sneaker company",
@@ -23,6 +25,7 @@ function App() {
   };
   return (
     <>
+      {modal ? <Modal setModal={setModal} imgActive={imgActive} setImgActive={setImgActive} imgSm={imgSm}/> : <></>}
       <Header producto={producto} setCantidadFinal={setCantidadFinal} />
       <main className="container h-[88vh] grid items-center grid-cols-2 mx-auto">
         <section className="w-[445px] h-[570px] mx-auto grid gap-8">
@@ -30,7 +33,8 @@ function App() {
             <img
               src={imgActive.slice(0, 23) + ".jpg"}
               alt="img-hero"
-              className="rounded-2xl"
+              className="rounded-2xl hover:cursor-pointer"
+              onClick={()=> setModal(true)}
             />
           </div>
           <div className="w-full h-[100px] grid grid-cols-4 gap-8">
